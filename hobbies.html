@@ -140,6 +140,24 @@
         .modal:target {
             display: flex;
         }
+
+            /* For laptop screens (1366x768) */
+    @media screen and (max-width: 1366px) {
+
+    .about-text {
+    position: absolute;
+    z-index: 2; /* Behind the image but above the circle */
+    color: black;
+    text-align: center;
+    top: 50%; /* Adjust to position the text higher */
+    transform: translateY(-90%); /* Center vertically */
+    font-size: 4rem; /* Large text */
+    font-weight: bold;
+    line-height: 1.2;
+    }
+
+    }
+    
     </style>
 </head>
 <body class="fade-in">

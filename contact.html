@@ -182,6 +182,34 @@
             cursor: pointer;
             font-family: 'Montserrat', sans-serif;
         }
+
+
+        /* For laptop screens (1366x768) */
+        @media screen and (max-width: 1366px) {
+
+        .about-text {
+        position: absolute;
+        z-index: 2; /* Behind the image but above the circle */
+        color: black;
+        text-align: center;
+        top: 50%; /* Adjust to position the text higher */
+        transform: translateY(-90%); /* Center vertically */
+        font-size: 4rem; /* Large text */
+        font-weight: bold;
+        line-height: 1.2;
+        }
+
+        .contact-section.glass-background {
+            position: relative;
+            top: 15%;
+            transform: translateY(-50%);
+            text-align: center;
+                   transform: none; /* Remove transform */
+        margin-top: 40px; /* Add spacing to avoid overlap */
+        margin-top: 200px;
+        }
+
+    }
     </style>
 </head>
 <body class="fade-in">
@@ -197,33 +225,125 @@
         </nav>
     </header>
     <main>
+    <style>
+        .contact-section.glass-background {
+            position: relative;
+            top: -60%;
+            transform: translateY(-50%);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-section .facebook-link {
+            text-decoration: none;
+            color: #fff;
+            background-color: #007BFF;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        #contact-form {
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #contact-form button {
+            padding: 10px 20px;
+            background-color: #ffc0cb;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #alert-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #alert-overlay > div {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #alert-overlay p {
+            font-size: 1.2rem;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #close-alert {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
     <div class="submain">
         <div class="about-hero">
             <div class="circle">
                 <!-- Contact Section Inside the Circle -->
-                <section class="contact-section glass-background" style="position: relative; top: -60%; transform: translateY(-50%); text-align: center; padding: 20px;">
+                <section class="contact-section glass-background">
                     <p style="font-size: 1rem; color: #555;">Connect with me on Facebook or use the form below.</p>
                     
                     <!-- Facebook Contact -->
-                    <a href="https://www.facebook.com/share/1ExkPNprfB/" target="_blank" style="text-decoration: none; color: #fff; background-color: #007BFF; padding: 10px 20px; border-radius: 5px; font-size: 1.2rem; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); display: inline-block; margin-bottom: 20px;">
+                    <a href="https://www.facebook.com/share/1ExkPNprfB/" target="_blank" class="facebook-link">
                         Connect on Facebook
                     </a>
 
                     <!-- Contact Form -->
-                    <form id="contact-form" style="width: 100%; max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
-                        <input id="name" type="text" placeholder="Name" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;" required>
-                        <input id="email" type="email" placeholder="Email" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;" required>
-                        <textarea id="message" placeholder="Your Message" rows="3" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;" required></textarea>
-                        <button type="submit" style="padding: 10px 20px; background-color: #ffc0cb; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; font: 1rem; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+                    <form id="contact-form">
+                        <input id="name" type="text" placeholder="Name" required>
+                        <input id="email" type="email" placeholder="Email" required>
+                        <textarea id="message" placeholder="Your Message" rows="3" required></textarea>
+                        <button type="submit">
                             Send Message
                         </button>
                     </form>
 
                     <!-- Glass-like Alert -->
-                    <div id="alert-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(10px); z-index: 1000; justify-content: center; align-items: center;">
-                        <div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 15px; text-align: center; max-width: 400px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-                            <p style="font-size: 1.2rem; color: #333; font-family: 'Montserrat', sans-serif;">Your message has been sent!</p>
-                            <button id="close-alert" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: #fff; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+                    <div id="alert-overlay">
+                        <div>
+                            <p>Your message has been sent!</p>
+                            <button id="close-alert">
                                 Close
                             </button>
                         </div>

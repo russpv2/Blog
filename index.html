@@ -37,6 +37,76 @@
                 opacity: 0;
             }
         }
+        /* For laptop screens (1366x768) */
+        @media screen and (max-width: 1366px) {
+            .cursor {
+                font-size: 6rem; /* Adjust size for laptops */
+            }
+
+            #typingText {
+                font-size: 4rem; /* Adjust size for laptops */
+                line-height: 1; /* Adjust line spacing for laptops */
+            }
+
+            #typingText br {
+                display: block; /* Ensure it behaves like a block element */
+                line-height: 0; /* Remove extra spacing caused by <br> */
+                margin: 0; /* Remove any default margin */
+                padding: 0; /* Remove any default padding */
+            }
+
+            #typingTextContainer {
+                margin-top: -40px; /* Adjust upwards for laptops */
+            }
+        }
+
+        /* For tablets */
+        @media screen and (max-width: 1024px) {
+            .cursor {
+                font-size: 4rem; /* Adjust size for tablets */
+            }
+
+            #typingText {
+                font-size: 2rem; /* Adjust size for tablets */
+                line-height: 1.4; /* Adjust line spacing for tablets */
+            }
+
+            #typingTextContainer {
+                margin-top: -30px; /* Adjust upwards for tablets */
+            }
+        }
+
+        /* For mobile phones */
+        @media screen and (max-width: 768px) {
+            .cursor {
+                font-size: 3rem; /* Adjust size for mobile */
+            }
+
+            #typingText {
+                font-size: 1.5rem; /* Adjust size for mobile */
+                line-height: 1.5; /* Adjust line spacing for mobile */
+            }
+
+            #typingTextContainer {
+                margin-top: -20px; /* Adjust upwards for mobile */
+            }
+        }
+
+        /* For very small screens */
+        @media screen and (max-width: 480px) {
+            .cursor {
+                font-size: 2rem; /* Adjust size for very small screens */
+            }
+
+            #typingText {
+                font-size: 1rem; /* Adjust size for very small screens */
+                line-height: 1.6; /* Adjust line spacing for very small screens */
+            }
+
+            #typingTextContainer {
+                margin-top: -10px; /* Adjust upwards for very small screens */
+            }
+        }
     </style>
 </head>
 <body class="fade-in">
