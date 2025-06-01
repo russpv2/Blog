@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Shane Adduru's Blog</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .cursor {
+            display: inline-block;
+            font-weight: 600;
+            font-size: 8rem; /* Adjust size to match the text */
+            color: #000;
+            animation: blink 0.7s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body class="fade-in">
+    <header>
+        <nav class="nav-center">
+            <ul>
+                <li><a href="index.html" class="active"><img src="images/home.png" alt="Home" class="home-icon" style="height: 25px;"></a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1 id="typingTextContainer">
+                    <span id="typingText"></span><span class="cursor">|</span> <!-- Combine text and cursor in the same container -->
+                </h1>
+                <p>
+                    Hello and welcome to my personal blog! If you’re curious about the person behind these pages, you’re in the right place. My name is Shane Adduru, a Bachelor of Science in Information Technology student who finds joy in singing, cooking, and unwinding with movies and dramas. 
+                </p>
+                <div class="buttons">
+                    <a href="hobbies.html" class="btn-primary">Explore</a>
+                    <a href="about.html" class="btn-secondary">Learn More</a>
+                </div>
+            </div>
+            
+            <div class="image-gallery-wrapper">
+                <div class="image-gallery" id="imageGallery">
+                    <img src="images/img2.jpg" alt="Placeholder Image 1" class="image-item">
+                    <img src="images/img1.jpg" alt="Placeholder Image 2" class="image-item">
+                    <img src="images/img4.jpg" alt="Placeholder Image 3" class="image-item">
+                    <img src="images/img3.jpg" alt="Placeholder Image 4" class="image-item">
+                    <img src="images/img5.jpg" alt="Placeholder Image 5" class="image-item">
+                    <img src="images/img6.jpg" alt="Placeholder Image 6" class="image-item">
+                    <img src="images/img2.jpg" alt="Placeholder Image 7" class="image-item">
+                    <img src="images/img1.jpg" alt="Placeholder Image 8" class="image-item">
+                    <img src="images/img4.jpg" alt="Placeholder Image 9" class="image-item">
+                    <img src="images/img3.jpg" alt="Placeholder Image 10" class="image-item">
+                    <img src="images/img5.jpg" alt="Placeholder Image 11" class="image-item">
+                    <img src="images/img6.jpg" alt="Placeholder Image 12" class="image-item">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Hi, I’m Shane Adduru, a Bachelor of Science in Information Technology student at Pampanga State University, Sto. Tomas Campus.</p>
+        <p>Thanks for visiting my blog! Connect with me: <a href="https://www.facebook.com/share/1ExkPNprfB/">Facebook</a></p>
+    </footer>
+    <script>
+    const text = "Welcome to\nMy Personal Blog";
+    const typingTextElement = document.getElementById("typingText");
+    let index = 0;
+
+    function typeEffect() {
+        if (index < text.length) {
+            const currentChar = text[index];
+            typingTextElement.innerHTML += currentChar === "\n" ? "<br>" : currentChar;
+            index++;
+            setTimeout(typeEffect, 100); // Adjust typing speed here (100ms per character)
+        } else {
+            // Reset after a delay to loop the animation
+            setTimeout(() => {
+                typingTextElement.innerHTML = ""; // Clear the text
+                index = 0; // Reset the index
+                typeEffect(); // Restart the typing effect
+            }, 2000); // Delay before restarting (2 seconds)
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", typeEffect);
+</script>
+</body>
+</html>

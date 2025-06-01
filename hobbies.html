@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Shane Adduru</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        font-size: 2rem; /* Icon size */
+        text-decoration: none;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 50%; /* Circular button */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px; /* Fixed width */
+        height: 40px; /* Fixed height */
+        transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+        background: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+    }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Glass-like background styling */
+        .glass-background {
+            background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Subtle shadow */
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .about-details h2, .about-details h3 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+
+        .about-details p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .cooking-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .cursor {
+            display: inline-block;
+            font-weight: 600;
+            font-size: 8rem;
+            color: #000;
+            animation: blink 0.7s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Styling for the image gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .image-gallery img {
+        width: 148px; /* Fixed width */
+        height: 263px; /* Fixed height */
+        object-fit: cover; /* Ensures the image fits within the dimensions */
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .modal:target {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="fade-in">
+    <header>
+        <nav class="nav-center">
+            <ul>
+                <li><a href="index.html"><img src="images/home.png" alt="Home" class="home-icon" style="height: 25px;"></a></li>
+                <li><a href="about.html" >About</a></li>
+                <li><a href="hobbies.html" class="active">Hobbies</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<main>
+    <div class="submain">
+        <div class="about-hero">
+            <div class="circle"></div>
+            <img src="images/solo2.png" alt="Shane's Image" class="about-image2">
+            <div class="about-text">
+                <h1>
+                    <span id="typing-text"></span>
+                    <span class="cursor">|</span>
+                </h1>
+            </div>
+        </div>
+
+        <script>
+            // Typing animation script
+            const text = "I'm Shane,<br>My hobbies";
+            const typingText = document.getElementById("typing-text");
+            const cursor = document.querySelector(".cursor");
+            let index = 0;
+
+            // Override type() to handle <br> tag
+            function type() {
+                if (index < text.length) {
+                    if (text.substring(index, index + 4) === "<br>") {
+                        typingText.innerHTML += "<br>";
+                        index += 4;
+                    } else {
+                        typingText.innerHTML += text.charAt(index);
+                        index++;
+                    }
+                    setTimeout(type, 150); // Adjust typing speed here
+                } else {
+                    setTimeout(() => {
+                        typingText.innerHTML = ""; // Clear text for looping
+                        index = 0;
+                        type();
+                    }, 2000); // Pause before restarting
+                }
+            }
+
+ 
+            type(); // Start typing animation
+        </script>
+
+        <section class="about-details glass-background">
+            <h2>My Hobbies</h2> 
+            <h3>Singing</h3>
+            <p>
+                Singing is one of my favorite hobbies because it allows me to express my emotions and creativity. It helps me relax, improves my mood, and gives me confidence when I perform or sing along to my favorite songs.
+            </p>
+            <h3>Cooking</h3>
+            <p>
+                Cooking is another hobby I enjoy, especially when I'm in the mood to try new recipes or prepare my favorite dishes. It allows me to be creative in the kitchen and share delicious meals with my family and friends.
+            </p>
+            <h3>Movies</h3>
+            <p>
+                I enjoy watching movies because it's a great way to relax and experience different stories, emotions, and cultures. It also inspires me and helps me learn new things in a fun way.
+            </p>
+        </section>
+
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <a href="#img1"><img src="images/img2.jpg" alt="Image 1"></a>
+            <a href="#img2"><img src="images/img3.jpg" alt="Image 2"></a>
+            <a href="#img3"><img src="images/img5.jpg" alt="Image 3"></a>
+            <a href="#img4"><img src="images/img7.jpg" alt="Image 4"></a>
+            <a href="#img5"><img src="images/img8.jpg" alt="Image 5"></a>
+        </div>
+
+        <!-- Modals for full-size images with back buttons -->
+        <div id="img1" class="modal">
+            <img src="images/img2.jpg" alt="Image 1">
+            <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 1.5rem; text-decoration: none; background: rgba(0, 0, 0, 0.5); padding: 10px 15px; border-radius: 50px;">&larr;</a>
+        </div>
+        <div id="img2" class="modal">
+            <img src="images/img3.jpg" alt="Image 2">
+            <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 1.5rem; text-decoration: none; background: rgba(0, 0, 0, 0.5); padding: 10px 15px; border-radius: 50px;">&larr;</a>
+        </div>
+        <div id="img3" class="modal">
+            <img src="images/img5.jpg" alt="Image 3">
+            <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 1.5rem; text-decoration: none; background: rgba(0, 0, 0, 0.5); padding: 10px 15px; border-radius: 0;">&larr;</a>
+        </div>
+        <div id="img4" class="modal">
+            <img src="images/img7.jpg" alt="Image 4">
+            <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 1.5rem; text-decoration: none; background: rgba(0, 0, 0, 0.5); padding: 10px 15px; border-radius: 50px;">&larr;</a>
+        </div>
+        <div id="img5" class="modal">
+            <img src="images/img8.jpg" alt="Image 5">
+            <a href="javascript:history.back()" style="position: absolute; top: 20px; left: 20px; color: white; font-size: 1.5rem; text-decoration: none; background: rgba(0, 0, 0, 0.5); padding: 10px 15px; border-radius: 50px;">&larr;</a>
+        </div>
+    </main>
+
+    <footer>
+        <p style="text-align: center; font-size: 1rem; color: #555;">Thanks for visiting my blog! Connect with me: <a href="https://www.facebook.com/share/1ExkPNprfB/
+" style="color: #007BFF; text-decoration: none;">Facebook</a></p>
+    </footer>
+</body>
+</html>

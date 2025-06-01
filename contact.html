@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Shane Adduru</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .back-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        color: white;
+        font-size: 2rem; /* Icon size */
+        text-decoration: none;
+        background: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 50%; /* Circular button */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px; /* Fixed width */
+        height: 40px; /* Fixed height */
+        transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+        background: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+    }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Glass-like background styling */
+        .glass-background {
+            background: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */
+            border-radius: 15px; /* Rounded corners */
+            padding: 20px;
+            /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); Subtle shadow */
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .about-details h2, .about-details h3 {
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+
+        .about-details p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #444;
+            margin-bottom: 1rem;
+        }
+
+        .cooking-image {
+            display: block;
+            margin: 20px auto;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .cursor {
+            display: inline-block;
+            font-weight: 600;
+            font-size: 8rem;
+            color: #000;
+            animation: blink 0.7s steps(2, start) infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Styling for the image gallery */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .image-gallery img {
+        width: 148px; /* Fixed width */
+        height: 263px; /* Fixed height */
+        object-fit: cover; /* Ensures the image fits within the dimensions */
+        border-radius: 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Modal styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+        }
+
+        .modal:target {
+            display: flex;
+        }
+
+        /* Glass-like Alert */
+        #alert-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* background: rgba(0, 0, 0, 0.5); */
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #alert-overlay > div {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #alert-overlay p {
+            font-size: 1.2rem;
+            color: #333;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #alert-overlay button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+</head>
+<body class="fade-in">
+    <header>
+        <nav class="nav-center">
+            <ul>
+                <li><a href="index.html"><img src="images/home.png" alt="Home" class="home-icon" style="height: 25px;"></a></li>
+                <li><a href="about.html" >About</a></li>
+                <li><a href="hobbies.html">Hobbies</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html"  class="active">Facebook</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <div class="submain">
+        <div class="about-hero">
+            <div class="circle">
+                <!-- Contact Section Inside the Circle -->
+                <section class="contact-section glass-background" style="position: relative; top: -60%; transform: translateY(-50%); text-align: center; padding: 20px;">
+                    <p style="font-size: 1rem; color: #555;">Connect with me on Facebook or use the form below.</p>
+                    
+                    <!-- Facebook Contact -->
+                    <a href="https://www.facebook.com/share/1ExkPNprfB/" target="_blank" style="text-decoration: none; color: #fff; background-color: #007BFF; padding: 10px 20px; border-radius: 5px; font-size: 1.2rem; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); display: inline-block; margin-bottom: 20px;">
+                        Connect on Facebook
+                    </a>
+
+                    <!-- Contact Form -->
+                    <form id="contact-form" style="width: 100%; max-width: 400px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px;">
+                        <input id="name" type="text" placeholder="Name" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;" required>
+                        <input id="email" type="email" placeholder="Email" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;" required>
+                        <textarea id="message" placeholder="Your Message" rows="3" style="padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;" required></textarea>
+                        <button type="submit" style="padding: 10px 20px; background-color: #ffc0cb; color: #ffffff; border: none; border-radius: 5px; font-weight: bold; font: 1rem; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+                            Send Message
+                        </button>
+                    </form>
+
+                    <!-- Glass-like Alert -->
+                    <div id="alert-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(10px); z-index: 1000; justify-content: center; align-items: center;">
+                        <div style="background: rgba(255, 255, 255, 0.8); padding: 20px; border-radius: 15px; text-align: center; max-width: 400px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+                            <p style="font-size: 1.2rem; color: #333; font-family: 'Montserrat', sans-serif;">Your message has been sent!</p>
+                            <button id="close-alert" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: #fff; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer; font-family: 'Montserrat', sans-serif;">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="about-image2"></div>
+            <div class="about-text">
+                <h1>
+                    <span id="typing-text"></span>
+                    <span class="cursor">|</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+</main>
+
+    <footer>
+        <p style="text-align: center; font-size: 1rem; color: #555;">Thanks for visiting my blog!</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Typing animation script
+            const text = "Feel free,<br>contact me!";
+            const typingText = document.getElementById("typing-text");
+            const cursor = document.querySelector(".cursor");
+            let index = 0;
+
+            // Override type() to handle <br> tag
+            function type() {
+                if (index < text.length) {
+                    if (text.substring(index, index + 4) === "<br>") {
+                        typingText.innerHTML += "<br>";
+                        index += 4;
+                    } else {
+                        typingText.innerHTML += text.charAt(index);
+                        index++;
+                    }
+                    setTimeout(type, 150); // Adjust typing speed here
+                } else {
+                    setTimeout(() => {
+                        typingText.innerHTML = ""; // Clear text for looping
+                        index = 0;
+                        type();
+                    }, 2000); // Pause before restarting
+                }
+            }
+
+            type();
+        });
+
+        document.getElementById("contact-form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get form values
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            // Validate form fields
+            if (!name || !email || !message) {
+                alert("Please fill out all fields.");
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+            // Show the glass-like alert
+            const alertOverlay = document.getElementById("alert-overlay");
+            alertOverlay.style.display = "flex";
+
+            // Clear form fields
+            document.getElementById("contact-form").reset();
+        });
+
+        // Close alert button functionality
+        document.getElementById("close-alert").addEventListener("click", function () {
+            document.getElementById("alert-overlay").style.display = "none";
+        });
+    </script>
+</body>
+</html>

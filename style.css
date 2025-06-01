@@ -1,0 +1,485 @@
+/* Add this at the very top of your CSS file to import Roboto from Google Fonts */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #ffffff;
+    background-color: #ffffff;
+    background-image: url('images/bg.jpg'); /* Replace with your preferred image URL */
+    background-size: cover; /* Ensure the image covers the entire page */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    height: 100vh; /* Ensure it covers the full viewport height */
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Higher z-index to stay above other elements */
+    background-color: transparent;
+    padding: 20px 0;
+}
+
+/* Navbar styles */
+.nav-center {
+    background-color: rgba(255, 255, 255, 0.308);
+    border-radius: 30px;
+    padding: 1px 40px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-center ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-center ul li {
+    margin: 0 15px;
+    position: relative;
+}
+
+.nav-center ul li a {
+    text-decoration: none;
+    color: black; /* Adjust color as needed */
+    font-weight: 600;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+.nav-center ul li a::after {
+    content: "";
+    display: block;
+    height: 2px;
+    background-color: black; /* Adjust underline color as needed */
+    width: 0;
+    transition: width 0.3s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.nav-center ul li a:hover::after,
+.nav-center ul li a.active::after {
+    width: 100%; /* Underline expands fully */
+}
+
+/* Default underline for the "Home" button */
+.nav-center ul li:first-child a {
+    position: relative;
+}
+
+.nav-center ul li:first-child a.active::after {
+    width: 100%;
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 1px 60px;
+    background-color: transparent; /* Ensure the hero section doesn't override the body background */
+}
+
+.hero-content {
+    max-width: 50%;
+    margin-top: 100px;
+}
+
+.hero h1 {
+    font-size: 100px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #000;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 40px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-primary, .btn-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: #000;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #333;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+}
+
+.btn-primary::after, .btn-secondary::after {
+    content: '→';
+    margin-left: 10px;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover::after, .btn-secondary:hover::after {
+    transform: translateX(5px);
+}
+
+.image-gallery-wrapper {
+    overflow: hidden; /* Hide overflowing images */
+    height: 100vh; /* Full height of the viewport */
+    position: relative;
+    margin-top: -100px; /* Pull the slider up to overlap the navigation bar */
+    z-index: 1; /* Lower z-index to stay below the navigation bar */
+}
+
+.image-gallery {
+    display: grid; /* Use grid for two-column layout */
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 20px; /* Maintain spacing between images */
+    position: relative;
+    z-index: 1; /* Ensure it stays below the navigation bar */
+    overflow-y: hidden; /* Prevent manual scrolling */
+}
+
+.image-item {
+    width: 100%; /* Ensure images fit the container */
+    height: 450px; /* Set consistent height for images */
+    object-fit: cover; /* Maintain aspect ratio */
+    border-radius: 20px; /* Optional: Add rounded corners */
+    background-color: #ddd;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for the left column */
+.image-item:nth-child(odd) {
+    animation: slideLeft 96s linear infinite; /* Duration for the full scroll */
+    animation-fill-mode: forwards; /* Ensure the animation stops at the last frame */
+}
+
+/* Animation for the right column */
+.image-item:nth-child(even) {
+    animation: slideRight 48s linear infinite; /* Duration for the full scroll */
+    animation-fill-mode: forwards; /* Ensure the animation stops at the last frame */
+}
+
+/* Keyframes for the left column */
+@keyframes slideLeft {
+    0% {
+        transform: translateY(50%); /* Start slightly offset */
+    }
+    50% {
+        transform: translateY(-350%); /* Scroll halfway through the 12 images */
+    }
+    100% {
+        transform: translateY(50%); /* Reset back to the original position */
+    }
+}
+
+/* Keyframes for the right column */
+@keyframes slideRight {
+    0% {
+        transform: translateY(0); /* Start at the top */
+    }
+    50% {
+        transform: translateY(-450%); /* Scroll halfway through the 12 images */
+    }
+    100% {
+        transform: translateY(0); /* Reset back to the original position */
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    color: #666;
+    margin-top: 0px; /* Add spacing above the footer */
+}
+
+.about-section {
+    margin-top: 40px;
+    max-width: 90%; /* Increase the maximum width */
+    padding: 70px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    left: 0;
+    width: 90%; /* Extend the width */
+    border-radius: 8px;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.about-section::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 150px;
+    height: 150px;
+    background: rgba(255, 255, 255, 0.15);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+    z-index: -1;
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: #000;
+    font-weight: bold;
+}
+
+.about-section h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.about-section .subheading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.about-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+blockquote {
+    text-align: center;
+    font-style: italic;
+    margin: 30px auto;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.author {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #555;
+}
+
+.about-content {
+    overflow: hidden; /* Ensure proper layout when the image is floated */
+    line-height: 1.8; /* Improve readability */
+    font-size: 1.1rem; /* Adjust font size */
+    color: #333; /* Ensure text is visible */
+}
+
+.side-image {
+    float: left; /* Make the image float to the left */
+    margin-right: 20px; /* Add spacing between the image and the text */
+    width: 450px; /* Increase the size of the image */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 15px; /* Optional: Add rounded corners */
+}
+
+/* About Page Styles */
+.submain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding: 20px;
+    background-color: #f9f9f9; */
+}
+
+.about-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* .about-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+} */
+
+.about-item {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    max-width: 90%;
+    text-align: left;
+}
+
+/* Centered image grid with varying heights */
+.centered-image-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+    align-items: start;
+    margin: 50px auto;
+    max-width: 1200px;
+}
+
+.centered-image-grid .image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.centered-image-grid .image-item img:hover {
+    transform: scale(1.05);
+}
+
+/* Typography adjustments */
+.about-section h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.about-section .subheading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+blockquote {
+    text-align: center;
+    font-style: italic;
+    margin: 30px auto;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.author {
+    text-align: center;
+    font-weight: 600;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* About Page Hero Section */
+.about-hero {
+    position: relative;
+    text-align: center;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center;
+    overflow: hidden;
+    padding-top: 50px; /* Add padding to control spacing from the top */
+}
+
+.circle {
+    width: 600px; /* Adjust the width of the half-circle */
+    height: 300px; /* Half the height of the circle */
+    background-color: pink;
+    border-radius: 300px 300px 0 0; /* Create a proper half-circle */
+    position: absolute;
+    bottom: -50px; /* Move the circle slightly upwards */
+    z-index: 1; /* Below the image */
+}
+
+.about-image {
+    position: relative;
+    z-index: 3; /* Highest z-index to appear above everything */
+    width: 1600px; /* Adjust the size of the image */
+    height: auto;
+    border-radius: 50%; /* Optional: Rounded image */
+    margin-top: -900px; /* Move the image upwards */
+}
+
+.about-image2 {
+    position: relative;
+    z-index: 3; /* Highest z-index to appear above everything */
+    width: 1000px; /* Adjust the size of the image */
+    height: auto;
+    /* border-radius: 50%; Optional: Rounded image */
+    margin-top: 100px; /* Move the image upwards */
+}
+
+.about-text {
+    position: absolute;
+    z-index: 2; /* Behind the image but above the circle */
+    color: black;
+    text-align: center;
+    top: 40%; /* Adjust to position the text higher */
+    transform: translateY(-90%); /* Center vertically */
+    font-size: 4rem; /* Large text */
+    font-weight: bold;
+    line-height: 1.2;
+}
+
